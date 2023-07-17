@@ -3,6 +3,8 @@ package com.education.management.student.infrastructure.controllers.dto;
 import jakarta.validation.constraints.*;
 
 public class StudentDto {
+
+    private String id;
     @NotEmpty
     @Size(min = 2)
     private String name;
@@ -17,17 +19,25 @@ public class StudentDto {
 
     @Min(value = 1)
     @Max(value = 10)
-    private Integer level;
+    private Integer grade;
 
     @Size(min = 2)
     private String section;
 
-    public StudentDto(String name, String email, Integer age, Integer level, String section) {
+    public StudentDto(String name, String email, Integer age, Integer grade, String section) {
         this.name = name;
         this.email = email;
         this.age = age;
-        this.level = level;
+        this.grade = grade;
         this.section = section;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -54,12 +64,12 @@ public class StudentDto {
         this.age = age;
     }
 
-    public Integer getLevel() {
-        return level;
+    public Integer getGrade() {
+        return grade;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
+    public void setGrade(Integer grade) {
+        this.grade = grade;
     }
 
     public String getSection() {

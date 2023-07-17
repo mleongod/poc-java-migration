@@ -15,14 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class CreateStudentController {
 
     private final CreateStudent createStudent;
+    private final StudentMapper mapper;
 
-    public CreateStudentController(CreateStudent createStudent) {
+    public CreateStudentController(CreateStudent createStudent, StudentMapper mapper) {
         this.createStudent = createStudent;
+        this.mapper = mapper;
     }
 
     @PostMapping(PathNames.STUDENT)
-    public ResponseEntity<Student> execute(@Valid @RequestBody StudentDto dto) {
-        Student student = this.createStudent.execute(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(student);
+    public ResponseEntity<StudentDto> execute(@Valid @RequestBody StudentDto dto) {
+        Student student = this.mapper.toEntity(dto);
+        this.createStudent.execute(student);
+        StudentDto studentDto = this.mapper.toDto(student);
+        return ResponseEntity.status(HttpStatus.CREATED).body(studentDto);
     }
 }
