@@ -2,9 +2,11 @@ package com.education.management.school.infrastructure.controllers;
 
 import com.education.management.school.application.GetSchoolById;
 import com.education.management.school.domain.School;
+import com.education.management.school.infrastructure.controllers.dto.SchoolDto;
 import com.education.management.shared.infrastructure.helpers.PathNames;
-import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.UUID;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
+import java.util.UUID;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class GetSchoolByIdController {
 
     private final GetSchoolById getSchoolById;
+    private final SchoolMapper mapper;
 
-    public GetSchoolByIdController(GetSchoolById getSchoolCollection) {
+
+    public GetSchoolByIdController(GetSchoolById getSchoolCollection, SchoolMapper mapper) {
         this.getSchoolById = getSchoolCollection;
+        this.mapper = mapper;
     }
 
     @GetMapping(PathNames.SCHOOL + "/{id}")
-    public ResponseEntity<School> getSchoolById(@PathVariable("id") @NotBlank @UUID(version = 4) java.util.UUID id) {
-        School school = this.getSchoolById.execute(id);
-        return ResponseEntity.ok(school);
+    public ResponseEntity<SchoolDto> getSchoolById(@PathVariable("id") @Valid @Size(min = 36) String id) {
+        School school = this.getSchoolById.execute(UUID.fromString(id));
+        SchoolDto schoolDto = this.mapper.toDto(school);
+        return ResponseEntity.ok(schoolDto);
     }
 }

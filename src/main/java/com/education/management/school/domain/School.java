@@ -8,11 +8,11 @@ import lombok.Getter;
 @Getter
 public class School extends AggregateRoot {
     private final String name;
-    private final String email;
+    private final String address;
 
-    public School(UUID id, Date createdAt, Date updatedAt, String name, String email) {
-        super(id, createdAt, updatedAt);
+    public School(String name, String address) {
+        super(UUID.randomUUID(), new Date(), new Date());
         this.name = name;
-        this.email = email;
+        this.address = address;
     }
 }

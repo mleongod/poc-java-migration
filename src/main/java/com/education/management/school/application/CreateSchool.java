@@ -1,7 +1,7 @@
 package com.education.management.school.application;
 
+import com.education.management.school.domain.School;
 import com.education.management.school.domain.SchoolRepository;
-import com.education.management.school.infrastructure.controllers.dto.SchoolDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,9 +12,7 @@ public class CreateSchool {
         this.schoolRepository = schoolRepository;
     }
 
-    public void execute(SchoolDto schoolDto) {
-//        School school = new School(schoolDto.getName(), schoolDto.getEmail());
-//        this.schoolRepository.create(school);
-       /// return school;
+    public void execute(School school) {
+        this.schoolRepository.create(school);
     }
 }

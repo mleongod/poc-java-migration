@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class SchoolRepositoryImplementation extends CrudRepository<School> implements SchoolRepository {
     public SchoolRepositoryImplementation() {
-        super(School.class.getName());
+        super(School.class.getSimpleName());
     }
 }

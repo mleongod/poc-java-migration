@@ -1,18 +1,27 @@
 package com.education.management.school.infrastructure.controllers.dto;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class SchoolDto {
+
+    private String id;
 
     @NotEmpty()
     @Size(min = 2)
     private String name;
 
     @NotEmpty()
-    @Email()
-    private String email;
+    @Size(min = 3)
+    private String direction;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -22,11 +31,11 @@ public class SchoolDto {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDirection() {
+        return direction;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 }

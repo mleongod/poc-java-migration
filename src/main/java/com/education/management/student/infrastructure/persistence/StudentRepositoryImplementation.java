@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public class StudentRepositoryImplementation extends CrudRepository<Student>
     implements StudentRepository {
   public StudentRepositoryImplementation() {
-    super(Student.class.getName());
+    super(Student.class.getSimpleName());
   }
 
   @Override

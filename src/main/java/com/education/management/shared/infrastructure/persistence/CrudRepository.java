@@ -32,7 +32,7 @@ public class CrudRepository<T extends AggregateRoot> {
 
     public void existsOrThrow(UUID id) throws NotFoundException {
         if (!this.rows.containsKey(id)) {
-            String message = String.format("%s %s not found", this.className, id.toString());
+            String message = String.format("Not found %s with id %s", this.className, id.toString());
             throw NotFoundException.create(message);
         }
     }
