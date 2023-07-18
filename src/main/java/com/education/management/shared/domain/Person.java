@@ -10,13 +10,13 @@ public abstract class Person extends AggregateRoot {
     protected String name;
     protected String email;
     protected Integer age;
-    protected PersonRoles rol;
+    protected PersonRoles role;
 
-    public Person(String name, String email, Integer age, PersonRoles rol) {
+    public Person(String name, String email, Integer age, PersonRoles role) {
         super(UUID.randomUUID(), new Date(), new Date());
         this.name = name;
         this.email = email;
         this.age = age;
-        this.rol = rol;
+        this.role = role;
     }
 }

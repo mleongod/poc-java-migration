@@ -2,20 +2,16 @@ package com.education.management.school.application;
 
 import com.education.management.school.domain.School;
 import com.education.management.school.domain.SchoolRepository;
+import java.util.UUID;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
+@AllArgsConstructor
 public class GetSchoolById {
     private final SchoolRepository schoolRepository;
 
-    public GetSchoolById(SchoolRepository schoolRepository) {
-        this.schoolRepository = schoolRepository;
-    }
-
     public School execute(UUID uuid) {
-        School school = this.schoolRepository.getById(uuid);
-        return school;
+        return this.schoolRepository.getById(uuid);
     }
 }

@@ -6,14 +6,13 @@ import lombok.Getter;
 
 @Getter
 public abstract class AggregateRoot {
-    protected UUID id;
-    protected Date createdAt;
-    protected Date updatedAt;
+  protected UUID id;
+  protected Date createdAt;
+  protected Date updatedAt;
 
-    public AggregateRoot(UUID id, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-    
-    }
+  public AggregateRoot(UUID id, Date createdAt, Date updatedAt) {
+    this.id = id;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+  }
+}

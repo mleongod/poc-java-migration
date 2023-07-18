@@ -1,4 +1,4 @@
-package com.education.management.student.infrastructure.controllers;
+package com.education.management.student.infrastructure.mapper;
 
 import com.education.management.student.domain.Student;
 import com.education.management.student.infrastructure.controllers.dto.StudentDto;

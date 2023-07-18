@@ -1,4 +1,4 @@
-package com.education.management.shared.infrastructure.persistence;
+package com.education.management.shared.infrastructure.persistence.inmemory;
 
 import com.education.management.shared.domain.AggregateRoot;
 import com.education.management.shared.infrastructure.exceptions.NotFoundException;

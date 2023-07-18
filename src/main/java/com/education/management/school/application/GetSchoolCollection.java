@@ -2,20 +2,16 @@ package com.education.management.school.application;
 
 import com.education.management.school.domain.School;
 import com.education.management.school.domain.SchoolRepository;
+import java.util.Collection;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-
 @Service
+@AllArgsConstructor
 public class GetSchoolCollection {
     private final SchoolRepository schoolRepository;
 
-    public GetSchoolCollection(SchoolRepository schoolRepository) {
-        this.schoolRepository = schoolRepository;
-    }
-
     public Collection<School> execute() {
-        Collection<School> schoolCollection = this.schoolRepository.getAll();
-        return schoolCollection;
+        return this.schoolRepository.getAll();
     }
 }

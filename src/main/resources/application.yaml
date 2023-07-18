@@ -1,0 +1,28 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://${APP_MONGODB_USER:user}:${APP_MONGODB_PASSWORD:password}@${APP_MONGODB_CLUSTER:localhost}:${APP_MONGODB_PORT:27017}/${APP_MONGODB_DB:school}
+  jpa:
+    show-sql: true
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: none
+    properties.hibernate:
+      default_schema: ${APP_POSTGRES_SCHEMA:public} # https://github.com/lbruun/Pre-Liquibase
+  liquibase:
+    enabled: true
+    #    change-log: classpath:db/db.changelog-master.yaml # https://docs.liquibase.com/tools-integrations/springboot/springboot.html
+    default-schema: ${APP_POSTGRES_SCHEMA:public} # https://github.com/lbruun/Pre-Liquibase
+  datasource:
+    url: jdbc:postgresql://${APP_POSTGRES_HOST:localhost}:${APP_POSTGRES_PORT:5432}/${APP_POSTGRES_DB:school}
+    username: ${APP_POSTGRES_USER:root}
+    password: ${APP_POSTGRES_PASSWORD:secret}
+    hikari:
+      schema: ${APP_POSTGRES_SCHEMA:public}
+      minimum-idle: 5 #minimum number of idle connections maintained by HikariCP in a connection pool
+      maximum-pool-size: 20
+  sql:
+    init:
+      mode: always
+
+

@@ -1,17 +1,17 @@
-package com.education.management.student.infrastructure.persistence;
+package com.education.management.student.infrastructure.persistence.memory;
 
-import com.education.management.shared.infrastructure.persistence.CrudRepository;
+import com.education.management.shared.infrastructure.persistence.inmemory.CrudRepository;
 import com.education.management.student.domain.Student;
-import com.education.management.student.domain.StudentRepository;
+import com.education.management.student.repositories.StudentInMemoryRepository;
 import jakarta.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.Objects;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class StudentRepositoryImplementation extends CrudRepository<Student>
-    implements StudentRepository {
-  public StudentRepositoryImplementation() {
+public class StudentInMemoryInMemoryRepositoryImplementation extends CrudRepository<Student>
+    implements StudentInMemoryRepository {
+  public StudentInMemoryInMemoryRepositoryImplementation() {
     super(Student.class.getSimpleName());
   }
 
