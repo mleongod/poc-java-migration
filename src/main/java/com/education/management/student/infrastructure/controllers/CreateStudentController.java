@@ -1,6 +1,7 @@
 package com.education.management.student.infrastructure.controllers;
 
 import com.education.management.shared.infrastructure.helpers.PathNames;
+import com.education.management.shared.infrastructure.kafka.KafkaProducer;
 import com.education.management.student.application.memory.CreateStudentInMemory;
 import com.education.management.student.application.mongo.CreateStudentMongo;
 import com.education.management.student.application.postgre.CreateStudentPostgre;
@@ -27,6 +28,7 @@ public class CreateStudentController {
   private final CreateStudentMongo createStudentMongo;
   private final CreateStudentPostgre createStudentPostgre;
   private final StudentMapper mapper;
+  private final KafkaProducer kafkaProducer;
 
   @PostMapping(PathNames.STUDENT)
   public ResponseEntity<StudentDto> execute(
@@ -40,6 +42,7 @@ public class CreateStudentController {
       default -> this.createStudentInMemory.execute(student);
     }
     StudentDto studentDto = this.mapper.toDto(student);
+    this.kafkaProducer.sendMessage("student-" + student.getId());
     return ResponseEntity.status(HttpStatus.CREATED).body(studentDto);
   }
 }

@@ -20,7 +20,12 @@ spring:
   sql:
     init:
       mode: always
-
+  kafka:
+    bootstrap-servers: ${APP_KAFKA_BROKERS:localhost:29092}
+    admin:
+      auto-create: true
+    consumer:
+      group-id: school-id
 logging:
   level:
     net:
