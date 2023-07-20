@@ -5,7 +5,7 @@ import com.education.management.student.infrastructure.controllers.dto.StudentDt
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = StudentMapper.class)
+@Mapper(componentModel = "spring")
 public interface StudentMapper {
   @Mapping(target="grade", source="level")
   StudentDto toDto(Student student);

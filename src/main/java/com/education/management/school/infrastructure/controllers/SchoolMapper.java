@@ -5,7 +5,7 @@ import com.education.management.school.infrastructure.controllers.dto.SchoolDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = SchoolMapper.class)
+@Mapper(componentModel = "spring")
 public interface SchoolMapper {
   @Mapping(target="address", source="direction")
   School toEntity(SchoolDto schoolDto);
