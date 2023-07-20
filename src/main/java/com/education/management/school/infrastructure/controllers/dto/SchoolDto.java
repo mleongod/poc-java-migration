@@ -2,6 +2,7 @@ package com.education.management.school.infrastructure.controllers.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import java.util.Collection;
 
 public class SchoolDto {
 
@@ -14,6 +15,9 @@ public class SchoolDto {
     @NotEmpty()
     @Size(min = 3)
     private String direction;
+
+    @NotEmpty()
+    private Collection<String> students;
 
     public String getId() {
         return id;
@@ -37,5 +41,13 @@ public class SchoolDto {
 
     public void setDirection(String direction) {
         this.direction = direction;
+    }
+
+    public Collection<String> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Collection<String> students) {
+        this.students = students;
     }
 }

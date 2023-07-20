@@ -4,14 +4,12 @@ import com.education.management.shared.infrastructure.exceptions.NotFoundExcepti
 import com.education.management.student.domain.Student;
 import com.education.management.student.infrastructure.mapper.StudentPostgreMapper;
 import com.education.management.student.repositories.StudentPostgreRepository;
-import jakarta.transaction.Transactional;
 import java.util.Collection;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Transactional
 @RequiredArgsConstructor
 public class StudentPostgreRepositoryImplementation implements StudentPostgreRepository {
   private final SpringDataStudentJpaRepository repository;

@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  title: Student API
+  version: 1.0.0
+paths:
+  /students:
+    post:
+      tags:
+        - Students
+      summary: Create a new student
+      parameters:
+        - $ref: '#/components/parameters/sourceHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentInputDto'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentOutputDto'
+  /students/{id}:
+    get:
+      tags:
+        - Students
+      summary: Get a student by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/sourceHeader'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentOutputDto'
+        '404':
+          description: Student not found
+  /students/level/{level}:
+    get:
+      tags:
+        - Students
+      summary: Get students by grade level
+      parameters:
+        - in: path
+          name: level
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/sourceHeader'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentOutputDto'
+components:
+  schemas:
+    StudentOutputDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: uuid
+        name:
+          type: string
+          minLength: 2
+          example: John
+        email:
+          type: string
+          format: email
+          example: john@doe.com
+        age:
+          type: integer
+          minimum: 5
+          example: 18
+        grade:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 8
+        section:
+          type: string
+          minLength: 2
+          example: A
+      required:
+        - name
+        - age
+    StudentInputDto:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 2
+          example: John
+        email:
+          type: string
+          format: email
+          example: john@doe.com
+        age:
+          type: integer
+          minimum: 5
+          example: 18
+        grade:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 8
+        section:
+          type: string
+          minLength: 2
+          example: A
+      required:
+        - name
+        - age
+  parameters:
+    sourceHeader:
+      in: header
+      name: source
+      required: false
+      schema:
+        type: string
+        enum: [ mongo, postgre ]
+
