@@ -1,33 +1,32 @@
 services:
-  app:
-    container_name: school-challenge
-    image: school-challenge:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        JAR_FILE: ./target/school-0.0.1-SNAPSHOT.jar
-    environment:
-      APP_SERVER_PORT: "8080"
-      APP_MONGODB_CLUSTER: "mongodb"
-      APP_MONGODB_PORT: "27017"
-      APP_MONGODB_DB: "school"
-      APP_MONGODB_USER: "user"
-      APP_MONGODB_PASSWORD: "password"
-      APP_POSTGRES_HOST: "postgres"
-      APP_POSTGRES_PORT: "5432"
-      APP_POSTGRES_DB: "school"
-      APP_KAFKA_SECURITY_PROTOCOL: "PLAINTEXT"
-      APP_KAFKA_JAAS_ENABLED: "false"
-      APP_KAFKA_BOOTSTRAP_SERVERS: "http://kafka-broker:9092"
-      APP_KAFKA_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mongodb
-      - zookeeper
-      - kafka-broker
-
+  #  app:
+  #    container_name: school-challenge
+  #    image: school-challenge:latest
+  #    build:
+  #      context: .
+  #      dockerfile: Dockerfile
+  #      args:
+  #        JAR_FILE: ./target/school-0.0.1-SNAPSHOT.jar
+  #    environment:
+  #      APP_SERVER_PORT: "8080"
+  #      APP_MONGODB_CLUSTER: "mongodb"
+  #      APP_MONGODB_PORT: "27017"
+  #      APP_MONGODB_DB: "school"
+  #      APP_MONGODB_USER: "user"
+  #      APP_MONGODB_PASSWORD: "password"
+  #      APP_POSTGRES_HOST: "postgres"
+  #      APP_POSTGRES_PORT: "5432"
+  #      APP_POSTGRES_DB: "school"
+  #      APP_KAFKA_SECURITY_PROTOCOL: "PLAINTEXT"
+  #      APP_KAFKA_JAAS_ENABLED: "false"
+  #      APP_KAFKA_BOOTSTRAP_SERVERS: "http://kafka-broker:9092"
+  #      APP_KAFKA_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+  #    ports:
+  #      - "8080:8080"
+  #    depends_on:
+  #      - mongodb
+  #      - zookeeper
+  #      - kafka-broker
   mongodb:
     image: 'mongo:latest'
     environment:
